@@ -1,3 +1,1 @@
 # PythonNotes
-
-Hi
