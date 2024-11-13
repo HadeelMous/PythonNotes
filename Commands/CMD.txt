@@ -1,0 +1,13 @@
+ls
+cd
+cd ..
+pwd
+mkdir
+touch                    # create an empty file
+cat                      # display the contents of a file in the terminal.
+cp
+cp -r
+rm 
+rm -r
+mv 
+head -n 6 README.md     # display the first 6 lines of a file named README.md

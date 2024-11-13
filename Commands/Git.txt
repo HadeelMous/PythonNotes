@@ -1,0 +1,52 @@
+#======================== general
+git status
+git init 
+git remote add origin https://github.com/username/repository-name.git
+or
+git clone https://github.com/username/repository-name.git
+git clone repo-name folder-name
+
+
+#======================== commit 
+git add .                       # stage all
+git commit -m "add message"     # commit with message
+git pull                        # pull
+git push                        # push 
+git fetch                       # download new updates from a remote repository without merging them into your local branch.
+
+fx
+git fetch origin                # If new commits were added, you’ll now have them locally as origin/main.
+git diff main origin/main
+git merge origin/main
+
+git add                         # specify files
+git commit                      # vim
+git push --set-upstream origin hadeel
+
+
+git reset --soft HEAD~1         # delete last commit 
+
+
+#======================== branches
+git branch                          # see overview 
+git checkout -b <my_branch_name>    # create branch
+git checkout <my_branch_name>       # to change between branches
+git branch -d <my_branch_name>      # delete local if pushed
+git branch -D <my_branch_name>      # delete local force 
+git push <remote> --delete <branch> # delete remote
+git fetch                           # pull push delete local branchs not in remote
+git merge <my_branch_name>          # run it from the branch you want to merge <my_branch_name> to 
+
+#======================== Fork and Upstream
+# Configuring a remote for a fork (upstream)
+git remote -v
+git remote add upstream https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git
+git remote -v
+
+# Syncing a fork web
+https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork
+
+# Syncing a fork from the command line
+git fetch upstream
+git checkout main
+git merge upstream/main
