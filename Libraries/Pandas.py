@@ -109,6 +109,9 @@
 # #################################
 # Date:
 # #################################
+
+# Data['Date'].count() Report the total number of x in the dataset
+
 # pd.to_datetime(Data['Date']) # comparsion is okay
 # pd.to_datetime(data['Date']).dt.month
 # pd.to_datetime(data['Date']).dt.day
@@ -128,8 +131,14 @@
 # data.drop(columns='colName')
 # data.drop(index=rowindex)
 
-# data['colName'].unique()
-# data['colName'].nunique()
+# data['colName'].unique() List the various categories of x
+# data['colName'].nunique() How many x category are there?
+
+
+# Data['colName'].value_counts(ascending=False) List the number of x in each category:
+# Data['colName'].value_counts(ascending=False).plot(kind='bar', figsize =(8,8)) # Create a histogram over x occurrences:
+
+
 
 # data.groupby(['colName','colName'])['ColName'].count()
 # data.groupby(['colName','colName'])['ColName'].size().unstack()
