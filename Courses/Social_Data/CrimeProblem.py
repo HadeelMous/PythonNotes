@@ -411,9 +411,9 @@ Time -> Minutes
 
 Data  = focus crimes & != 2018
 """
-data_Jit = data[data['Category']=='ROBBERY'] 
-data_Jit = data_Jit[data_Jit['Month_Numeric']<=6]
-data_Jit = data_Jit[data_Jit['Hour']==13].reset_index(drop=True)
+data_Jit = data[data['Category']=='LARCENY/THEFT'] 
+data_Jit = data_Jit[data_Jit['Month_Numeric']<=10]
+data_Jit = data_Jit[data_Jit['Hour']==19].reset_index(drop=True)
 data_Jit['Time'] = pd.to_datetime(data_Jit['Time']).dt.minute
 
 import seaborn as sns # for jitter plot
@@ -452,7 +452,7 @@ Data  = focus crimes & != 2018
 """
 data ['Y']
 data_hist1 = data[data['Category'] == 'ROBBERY']
-data_hist1 = data_hist1[data_hist1['Month_Numeric']==1]
+data_hist1 = data_hist1[data_hist1['Month_Numeric']==12]
 data_hist1.shape[0]
 data_hist1['Y']
 
@@ -472,7 +472,7 @@ Month = Jan
 Data  = focus crimes & != 2018
 """
 data_hist2 = data[data['Category'] == 'VANDALISM']
-data_hist2 = data_hist2[data_hist2['Month_Numeric']==1]
+data_hist2 = data_hist2[data_hist2['Month_Numeric']==10]
 data_hist2.shape[0]
 data_hist2['Y']
 
