@@ -19,11 +19,17 @@
 ## Explore and manipulate
 # #################################
 # Data.head()  # To preview the first few rows of the dataset
+# Data.tail()  # To preview the last few rows of the dataset
 # Data.info()  # To get a summary of the data types and non-null counts
 # Data.describe()  # To get summary statistics for numerical columns
 # Data.index  # to get the row labels of a DataFrame
 # Data.columns # to get the column labels of a DataFrame
-
+# Data.replace('?',np.NaN) #replace the "?" symbol with NaN 
+# Data.dropna(subset=['rowname'], axis=0, inplace=True) # remove missing value
+# Data['rowname'].replace(np.nan, new_value) # replace missing value
+# Data.rename(columns={'old_name': 'new_name'}, inplace=True)
+# Data.['rowname'].astype('int') #convert data type of price fx to int
+# Data[['rowname1', 'rowname2', 'rowname3', ...]].corr() #Find the correlation between the following columns
 # #################################
 # # create: 
 # #################################
@@ -150,6 +156,57 @@
 # data.shape
 
 # data['colName'].values()
+
+# pd.get_dummies(data['']) transforms categorical variables into (1,0)
+
+###### Missing values
+#missing_data = data.isnull()
+#missing_data.head(5)
+
+#Count missing values in each column
+#for column in missing_data.columns.values.tolist():
+#    print(column)
+#    print (missing_data[column].value_counts())
+#    print("")   
+
+
+####### bins:
+#num_bins = x  # Number of bins
+#bins = np.linspace(df['Values'].min(), df['Values'].max(), num_bins + 1)
+
+# group_name=['low', 'medium','high']
+# Apply binning with pd.cut
+#df['Binned'] = pd.cut(df['Values'], bins=bins, labels=[f'Bin {i}' for i in range(1, num_bins + 1)], right=False)
+#df['Binned'] = pd.cut(df['Values'], bins=bins, labels=group_name, include_lowest=True)
+
+####### Deal with missing data:
+#avg = df["colname"].astype("float").mean(axis = 0)
+#print("Average of colname:", avg)
+
+# replace NaN by mean value in "colname" column
+#df["colname"].replace(np.nan, avg, inplace = True)
+
+#OR
+# Data.replace("?", np.nan, inplace = True)
+
+#OR
+#drop all rows that do not have data:
+#Data.dropna(subset=["colname"], axis=0, inplace=True)
+
+# reset index, because we droped two rows
+#Data.reset_index(drop=True, inplace=True)
+
+
+###### grouping
+#grouping = data.groupby(['Category','DayOfWeek'], as_index=False).mean()
+
+#pivot
+#pivot_table = grouping.pivot(index='Category', columns='DayOfWeek')
+#or
+#heatmap
+#plt.pcolor(grouping,camp='RdBu')
+#plt.colorbar()
+#plt.show()
 
 
 ####### examples: 
