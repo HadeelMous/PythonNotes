@@ -14,22 +14,8 @@
 # fileName = 'Police_Department_Incident_Reports__Historical_2003_to_May_2018.csv'
 # filePath = os.path.abspath(os.path.join(os.getcwd(), '..' ,'Datasets', fileName))
 # Data = pd.read_csv(filePath)
- 
-# #################################
-## Explore and manipulate
-# #################################
-# Data.head()  # To preview the first few rows of the dataset
-# Data.tail()  # To preview the last few rows of the dataset
-# Data.info()  # To get a summary of the data types and non-null counts
-# Data.describe()  # To get summary statistics for numerical columns
-# Data.index  # to get the row labels of a DataFrame
-# Data.columns # to get the column labels of a DataFrame
-# Data.replace('?',np.NaN) #replace the "?" symbol with NaN 
-# Data.dropna(subset=['rowname'], axis=0, inplace=True) # remove missing value
-# Data['rowname'].replace(np.nan, new_value) # replace missing value
-# Data.rename(columns={'old_name': 'new_name'}, inplace=True)
-# Data.['rowname'].astype('int') #convert data type of price fx to int
-# Data[['rowname1', 'rowname2', 'rowname3', ...]].corr() #Find the correlation between the following columns
+
+
 # #################################
 # # create: 
 # #################################
@@ -47,6 +33,20 @@
 
 # pd.Series(lst, index=lst)
 
+
+# #################################
+## Explore and manipulate
+# #################################
+# Data.head()  # To preview the first few rows of the dataset
+# Data.tail()  # To preview the last few rows of the dataset
+# Data.info()  # To get a summary of the data types and non-null counts
+# Data.describe()  # To get summary statistics for numerical columns
+# Data.describe(include=['object']) # To apply the method "describe" on the variables of type 'object'
+# Data.index  # to get the row labels of a DataFrame
+# Data.columns # to get the column labels of a DataFrame
+# Data.rename(columns={'old_name': 'new_name'}, inplace=True)
+# Data[['rowname1', 'rowname2', 'rowname3', ...]].corr() #Find the correlation between the following columns
+#  df['rowname1'].value_counts().idxmax() #the most frequent value of the attribute.
 
 # #################################
 # Slicing and accessing:
@@ -80,6 +80,8 @@
 # Column slicing by position
 # data.iloc[:, 0:2]
 
+# iloc: Selecting Rows by Index
+#loc:Selecting Rows by Label	
 
 # data[data['colName']==value] #creates a boolean Series where each entry is True if the condition is met
 
@@ -92,6 +94,27 @@
 # data[data['colName'].isin(lst)]
 # Filter rows where column 'A' is in [1, 3]
 # filtered_data = data[data['A'].isin([1, 3])]
+
+
+# #################################
+## Deal with missing data:
+# #################################
+# Data.replace('?',np.NaN, inplace = True) #replace the "?" symbol with NaN 
+# Data.dropna(subset=['rowname'], axis=0, inplace=True) # remove missing value
+# Data.reset_index(drop=True, inplace=True) # reset index, because we droped two rows
+
+# avg = df["colname"].astype("float").mean(axis = 0)
+# Data['rowname'].replace(np.nan, avg, inplace = True) # replace missing value
+# Data.drop_duplicates() #Removing Duplicates	
+
+#identify the entries having Null values
+#missing_data = data.isnull()
+
+#Count missing values in each column
+#for column in missing_data.columns.values.tolist():
+#    print(column)
+#    print (missing_data[column].value_counts())
+#    print("")   
 
 
 # #################################
@@ -125,6 +148,9 @@
 # pd.to_datetime(data['Time'].astype(str), format='%H:%M:%S').dt.minute
 
 # .astype(str), format='%H:%M:%S' to converts the time data into a string format.
+# Data.['rowname'].astype('int') #convert data type of price fx to int
+
+
 
 # #################################
 # Functions:
@@ -142,9 +168,12 @@
 
 
 # Data['colName'].value_counts(ascending=False) List the number of x in each category:
+# Data['colName'].value_counts.to_frame() make it as a table
 # Data['colName'].value_counts(ascending=False).plot(kind='bar', figsize =(8,8)) # Create a histogram over x occurrences:
 
 
+
+###### grouping
 
 # data.groupby(['colName','colName'])['ColName'].count()
 # data.groupby(['colName','colName'])['ColName'].size().unstack()
@@ -159,15 +188,40 @@
 
 # pd.get_dummies(data['']) transforms categorical variables into (1,0)
 
-###### Missing values
-#missing_data = data.isnull()
-#missing_data.head(5)
+#OR For making different plots
 
-#Count missing values in each column
-#for column in missing_data.columns.values.tolist():
-#    print(column)
-#    print (missing_data[column].value_counts())
-#    print("")   
+#grouping = data.groupby(['Category','DayOfWeek'], as_index=False).mean()
+
+#pivot
+#pivot_table = grouping.pivot(index='Category', columns='DayOfWeek')
+#or
+#heatmap
+#plt.pcolor(grouping,camp='RdBu')
+#plt.colorbar()
+#plt.show()
+
+
+# deatals heatmap
+#fig, ax = plt.subplots()
+#im = ax.pcolor(grouped_pivot, cmap='RdBu')
+
+#label names
+#row_labels = grouped_pivot.columns.levels[1]
+#col_labels = grouped_pivot.index
+
+#move ticks and labels to the center
+#ax.set_xticks(np.arange(grouped_pivot.shape[1]) + 0.5, minor=False)
+#ax.set_yticks(np.arange(grouped_pivot.shape[0]) + 0.5, minor=False)
+
+#insert labels
+#ax.set_xticklabels(row_labels, minor=False)
+#ax.set_yticklabels(col_labels, minor=False)
+
+#rotate label if too long
+#plt.xticks(rotation=90)
+
+#fig.colorbar(im)
+#plt.show()
 
 
 ####### bins:
@@ -179,34 +233,6 @@
 #df['Binned'] = pd.cut(df['Values'], bins=bins, labels=[f'Bin {i}' for i in range(1, num_bins + 1)], right=False)
 #df['Binned'] = pd.cut(df['Values'], bins=bins, labels=group_name, include_lowest=True)
 
-####### Deal with missing data:
-#avg = df["colname"].astype("float").mean(axis = 0)
-#print("Average of colname:", avg)
-
-# replace NaN by mean value in "colname" column
-#df["colname"].replace(np.nan, avg, inplace = True)
-
-#OR
-# Data.replace("?", np.nan, inplace = True)
-
-#OR
-#drop all rows that do not have data:
-#Data.dropna(subset=["colname"], axis=0, inplace=True)
-
-# reset index, because we droped two rows
-#Data.reset_index(drop=True, inplace=True)
-
-
-###### grouping
-#grouping = data.groupby(['Category','DayOfWeek'], as_index=False).mean()
-
-#pivot
-#pivot_table = grouping.pivot(index='Category', columns='DayOfWeek')
-#or
-#heatmap
-#plt.pcolor(grouping,camp='RdBu')
-#plt.colorbar()
-#plt.show()
 
 
 ####### examples: 
