@@ -48,6 +48,10 @@
 # Data[['rowname1', 'rowname2', 'rowname3', ...]].corr() #Find the correlation between the following columns
 #  df['rowname1'].value_counts().idxmax() #the most frequent value of the attribute.
 
+
+#Add the headers 
+#headers = ["age", "gender",....]
+#df.columns = headers
 # #################################
 # Slicing and accessing:
 # #################################
