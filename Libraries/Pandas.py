@@ -107,8 +107,17 @@
 # Data.dropna(subset=['rowname'], axis=0, inplace=True) # remove missing value
 # Data.reset_index(drop=True, inplace=True) # reset index, because we droped two rows
 
-# avg = df["colname"].astype("float").mean(axis = 0)
-# Data['rowname'].replace(np.nan, avg, inplace = True) # replace missing value
+
+# smoker is a categorical attribute, replace with most frequent entry
+#is_smoker = df['smoker'].value_counts().idxmax()
+#df["smoker"].replace(np.nan, is_smoker, inplace=True)
+
+# age is a continuous variable, replace with mean age
+#mean_age = df['age'].astype('float').mean(axis=0)
+#df["age"].replace(np.nan, mean_age, inplace=True)
+
+# Update data types
+#df[["age","smoker"]] = df[["age","smoker"]].astype("int")
 # Data.drop_duplicates() #Removing Duplicates	
 
 #identify the entries having Null values
