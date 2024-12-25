@@ -14,6 +14,7 @@
 # fileName = 'Police_Department_Incident_Reports__Historical_2003_to_May_2018.csv'
 # filePath = os.path.abspath(os.path.join(os.getcwd(), '..' ,'Datasets', fileName))
 # Data = pd.read_csv(filePath)
+# Data = pd.read_csv('filePath',usecols=['Category', ...])
 
 
 # #################################
@@ -52,6 +53,15 @@
 #Add the headers 
 #headers = ["age", "gender",....]
 #df.columns = headers
+
+# select specific data 
+# Selected_Crimes = ['BURGLARY','FRAUD']
+# Data = Data[Data['Category'].isin(Selected_Crimes)]
+
+
+# minimize the data
+# data = airline_data.sample(n=500, random_state=42)
+
 # #################################
 # Slicing and accessing:
 # #################################
@@ -157,6 +167,7 @@
 # pd.to_datetime(Data['Date']) # comparsion is okay
 # pd.to_datetime(data['Date']).dt.month
 # pd.to_datetime(data['Date']).dt.day
+# Data['Hour'] = pd.to_datetime(Data['Time']).dt.hour
 # pd.to_datetime(data['Time'].astype(str), format='%H:%M:%S').dt.hour
 # pd.to_datetime(data['Time'].astype(str), format='%H:%M:%S').dt.minute
 
@@ -190,6 +201,10 @@
 
 # data.groupby(['colName','colName'])['ColName'].count()
 # data.groupby(['colName','colName'])['ColName'].size().unstack()
+
+#EX
+# data.groupby('Month')['ArrDelay'].mean().reset_index()
+# bar_data = data.groupby(['DestState'])['Flights'].sum().reset_index()
 
 # counts = df[df.Category == 'WEAPON LAWS']['DayOfWeek'].value_counts()
 # weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
