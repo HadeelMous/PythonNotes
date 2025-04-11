@@ -138,6 +138,17 @@
 # plt.scatter(x,y,alpha=0.1,color='abbrToColor',marker="abbrToMarker")    
 # plt.plot(): Creates a line plot, which is typically used to show trends over time or continuous data, connecting data points with lines           
 
+
+
+# or
+# ax = plt.axes()
+
+# ax.scatter(data.sepal_length, data.sepal_width)
+
+# # Label the axes
+# ax.set(xlabel='Sepal Length (cm)',
+#        ylabel='Sepal Width (cm)',
+#        title='Sepal Length vs Width');
 # #################################
 # # 3. BarGraph: 
 # #################################
@@ -159,6 +170,21 @@
 # L = [lst]
 # plt.hist(L, bins=100, density=True)
 
+
+# data is the csv file, then you do a hist for all features in one plot
+# ax = data.plot.hist(bins=25, alpha=0.5)
+# ax.set_xlabel('Size (cm)');
+
+# To create x separate plots, use Pandas `.hist` method
+# axList = data.hist(bins=25)
+
+# # Add some x- and y- labels to first column and last row
+# for ax in axList.flatten():
+#     if ax.is_last_row():
+#         ax.set_xlabel('Size (cm)')
+        
+#     if ax.is_first_col():
+#         ax.set_ylabel('Frequency')
 
 # #################################
 # # 5. multiple plots:
