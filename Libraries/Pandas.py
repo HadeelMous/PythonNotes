@@ -48,6 +48,7 @@
 # Data.rename(columns={'old_name': 'new_name'}, inplace=True)
 # Data[['rowname1', 'rowname2', 'rowname3', ...]].corr() #Find the correlation between the following columns
 #  df['rowname1'].value_counts().idxmax() #the most frequent value of the attribute.
+# year_list = sorted(df['Year'].unique())
 
 
 #Add the headers 
@@ -61,6 +62,31 @@
 
 # minimize the data
 # data = airline_data.sample(n=500, random_state=42)
+
+
+# plitting the columns
+# data[['City', 'Province']] = data['GEO'].str.split(',', n=1, expand=True)
+
+
+### Filtering by multiple conditions
+# mult_loc = data[(data['GEO'] == "Toronto, Ontario") | (data['GEO'] == "Edmonton, Alberta")]
+# mult_loc
+
+# cities = ['Calgary', 'Toronto', 'Edmonton']
+# CTE = data[data.City.isin(cities)]
+# CTE
+
+# #################################
+## Explore boxplot info
+# #################################
+# Select just the rows desired from the 'describe' method and add in the 'median'
+# stats_df = data.describe()
+# stats_df.loc['range'] = stats_df.loc['max'] - stats_df.loc['min']
+
+# out_fields = ['mean','25%','50%','75%', 'range']
+# stats_df = stats_df.loc[out_fields]
+# stats_df.rename({'50%': 'median'}, inplace=True)
+# stats_df
 
 # #################################
 # Slicing and accessing:
@@ -218,6 +244,28 @@
 
 #OR For making different plots
 
+
+# vehicle = df_rec.groupby(['Year', 'Vehicle_Type'],as_index=False)['Automobile_Sales'].mean()
+# vehicle.set_index('Year', inplace=True)
+# vehicle=vehicle.groupby(['Vehicle_Type'])['Automobile_Sales']
+# vehicle.plot(kind='line', figsize=(10, 6))
+
+
+# applying multiple functions at once - 2 methods
+# data.groupby('species').agg(['mean', 'median'])  # passing a list of recognized strings
+# data.groupby('species').agg([np.mean, np.median])  # passing a list of explicit aggregation functions
+
+
+# If certain fields need to be aggregated differently, we can do:
+# from pprint import pprint
+
+# agg_dict = {field: ['mean', 'median'] for field in data.columns if field != 'species'}
+# agg_dict['petal_length'] = 'max'
+# pprint(agg_dict)
+# data.groupby('species').agg(agg_dict)
+
+
+
 #grouping = data.groupby(['Category','DayOfWeek'], as_index=False).mean()
 
 #pivot
@@ -262,6 +310,25 @@
 #df['Binned'] = pd.cut(df['Values'], bins=bins, labels=group_name, include_lowest=True)
 
 
+
+####### Skew: 
+# Create a list of float colums to check for skewing
+# mask = data.dtypes == np.float
+# float_cols = data.columns[mask]
+
+# skew_limit = 0.75 # define a limit above which we will log transform
+# skew_vals = data[float_cols].skew()
+# skew_vals
+
+
+# # Showing the skewed columns
+# skew_cols = (skew_vals
+#              .sort_values(ascending=False)
+#              .to_frame()
+#              .rename(columns={0:'Skew'})
+#              .query('abs(Skew) > {}'.format(skew_limit)))
+
+# skew_cols
 
 ####### examples: 
 # fileName = 'MVC_SL_W_Final.csv'
