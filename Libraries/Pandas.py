@@ -49,6 +49,7 @@
 # Data[['rowname1', 'rowname2', 'rowname3', ...]].corr() #Find the correlation between the following columns
 #  df['rowname1'].value_counts().idxmax() #the most frequent value of the attribute.
 # year_list = sorted(df['Year'].unique())
+# df_cca = df[df['x'].str.startswith('CCA')]  #find x sites begin with the string 'CCA' 
 
 
 #Add the headers 
