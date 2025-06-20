@@ -213,6 +213,8 @@ total_mass = df['PAYLOAD_MASS__KG_'].astype(float).sum()
 
 # pd.Series.sort_index()
 # pd.Series.sort_values(ascending=False)
+# year_list = df.sort_values(by='Date')
+
 
 # data.drop(columns='colName')
 # data.drop(index=rowindex)
