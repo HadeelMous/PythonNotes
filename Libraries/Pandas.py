@@ -153,6 +153,9 @@
 #mean_age = df['age'].astype('float').mean(axis=0)
 #df["age"].replace(np.nan, mean_age, inplace=True)
 
+total_mass = df['PAYLOAD_MASS__KG_'].astype(float).sum()
+
+
 # Update data types
 #df[["age","smoker"]] = df[["age","smoker"]].astype("int")
 # Data.drop_duplicates() #Removing Duplicates	
