@@ -1,4 +1,4 @@
-# """
+cxze# """
 # @author: Hadeel Moustafa
 # Pandas Notes 
 # """
@@ -254,6 +254,10 @@ total_mass = df['PAYLOAD_MASS__KG_'].astype(float).sum()
 # data['colName'].values()
 
 # pd.get_dummies(data['']) transforms categorical variables into (1,0)
+
+#features_one_hot = pd.get_dummies(features, columns=['Orbit', 'LaunchSite', 'LandingPad', 'Serial'])
+#features_one_hot.head()
+
 
 #OR For making different plots
 
