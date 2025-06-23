@@ -52,6 +52,10 @@
 # df_cca = df[df['x'].str.startswith('CCA')]  #find x sites begin with the string 'CCA' 
 
 
+# This code filters the rows where the column has its maximum value and displays selected columns.
+#max_value = df['KOLONNE1'].max()
+#df[df['KOLONNE1'] == max_value][['KOLONNE1', 'KOLONNE2']]
+
 #Add the headers 
 #headers = ["age", "gender",....]
 #df.columns = headers
