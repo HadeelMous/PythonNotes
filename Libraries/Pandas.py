@@ -239,8 +239,11 @@ total_mass = df['PAYLOAD_MASS__KG_'].astype(float).sum()
 # data.groupby(['colName','colName'])['ColName'].size().unstack()
 
 #EX
-# data.groupby('Month')['ArrDelay'].mean().reset_index()
+# data.groupby('Month')['ArrDelay'].mean().reset_index()   #Når vi vil beregne gennemsnit
 # bar_data = data.groupby(['DestState'])['Flights'].sum().reset_index()
+
+# grouped = df.groupby(['Orbit', 'Class']).size().reset_index(name='Count') #Når vi vil tælle antal
+
 
 # counts = df[df.Category == 'WEAPON LAWS']['DayOfWeek'].value_counts()
 # weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
