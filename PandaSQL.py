@@ -391,3 +391,14 @@ Where invoice_id =1
 DELETE Statement
 DELETE FROM Customers WHERE CustomerName='Alfreds Futterkiste'
 """
+# ================== #create a table
+CHAR(2): a character string of a fixed length, in this case 2. 
+VARCHAR(24): a character string of variable length with up to 24 characters. 
+
+CREATE TABLE author 
+( author_id CHAR(2) PRIMARY KEY NOT NULL, 
+lastname VARCHAR(15) NOT NULL, 
+firstname VARCHAR(15) NOT NULL, 
+email VARCHAR(40), 
+city VARCHAR(15), 
+country CHAR(2) )
