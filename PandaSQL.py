@@ -394,6 +394,7 @@ DELETE FROM Customers WHERE CustomerName='Alfreds Futterkiste'
 # ================== #create a table
 CHAR(2): a character string of a fixed length, in this case 2. 
 VARCHAR(24): a character string of variable length with up to 24 characters. 
+ID int PRIMARY KEY NOT NULL: the ID is an integer + primary key
 
 CREATE TABLE author 
 ( author_id CHAR(2) PRIMARY KEY NOT NULL, 
