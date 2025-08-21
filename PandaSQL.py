@@ -329,7 +329,7 @@ Limit 6,3 don’t show the first 6 and give the next three so 7-9
 
 
 """
-It gives the number of different countries
+Remove duplicate values from a specified result set and only return the unique values
 SELECT DISTINCT Country FROM Customers
 """
 
