@@ -325,6 +325,8 @@ Where phone is null
 """
 Limit 10 give the first 10 results 
 Limit 6,3 don’t show the first 6 and give the next three so 7-9
+same as 
+Limit 3 OFFSET 6;
 """
 
 
